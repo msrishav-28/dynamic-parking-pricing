@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Parking Pricing Model Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .model-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .model-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .visualizations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .viz-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .viz-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .viz-card-content {
+            padding: 1rem;
+        }
+
+        .viz-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tech-item {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .github-link {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .github-link:hover {
+            background: #555;
+        }
+
+        .recommendations {
+            background: #e8f4fd;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .recommendations h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .recommendations ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .recommendations li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .recommendations li:before {
+            content: "→";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .visualizations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dynamic Parking Pricing Model</h1>
+            <p class="subtitle">Optimizing parking prices through data-driven insights</p>
+        </header>
+
+        <div class="section">
+            <h2>Project Overview</h2>
+            <p>This project develops and analyzes dynamic pricing models for parking lots, leveraging historical occupancy, traffic, and special event data. The objective is to optimize parking prices to maximize revenue while managing demand effectively through three distinct pricing models.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">18,368</div>
+                    <div class="stat-label">Data Points Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">Parking Locations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Pricing Models</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Visualizations</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Pricing Models</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <h3>Model 1: Baseline Linear</h3>
+                    <p><strong>Formula:</strong> Price<sub>t+1</sub> = Price<sub>t</sub> + α · (Occupancy / Capacity)</p>
+                    <p>A simple linear adjustment to base price based on occupancy rate. Serves as a benchmark for comparison with more sophisticated models.</p>
+                </div>
+                <div class="model-card">
+                    <h3>Model 2: Demand-Based</h3>
+                    <p><strong>Formula:</strong> Demand = α·OccupancyRate + β·QueueLength − γ·Traffic + δ·SpecialDay + ε·VehicleType</p>
+                    <p>Incorporates multiple demand factors including occupancy, queue length, traffic conditions, special events, and vehicle types.</p>
+                </div>
+                <div class="model-card">
+                    <h3>Model 3: Competitive</h3>
+                    <p><strong>Enhancement:</strong> Model 2 + Geographic Proximity Analysis</p>
+                    <p>Extends Model 2 by considering nearby competitor pricing using Haversine distance calculations and competitive adjustment factors.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Visualizations & Insights</h2>
+            <div class="visualizations-grid">
+                <div class="viz-card">
+                    <img src="output/price_comparison_over_time.png" alt="Price Comparison Over Time">
+                    <div class="viz-card-content">
+                        <h3>Price Evolution Comparison</h3>
+                        <p>Shows how the three pricing models adjust prices over time for a specific parking lot, demonstrating the dynamic nature of each approach.</p>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <img src="output/occupancy_impact_model2.png" alt="Occupancy Impact on Model 2">
+                    <div class="viz-card-content">
+                        <h3>Occupancy Rate Impact</h3>
+                        <p>Demonstrates the positive correlation between occupancy rates and Model 2 pricing, validating the demand-based approach.</p>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <img src="output/queue_impact_model2.png" alt="Queue Length Impact on Model 2">
+                    <div class="viz-card-content">
+                        <h3>Queue Length Influence</h3>
+                        <p>Illustrates how queue length affects pricing in Model 2, showing increased prices with longer waiting times.</p>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <img src="output/price_distribution.png" alt="Price Distribution Across Models">
+                    <div class="viz-card-content">
+                        <h3>Price Distribution Analysis</h3>
+                        <p>Compares the distribution of prices across all three models, highlighting the range and frequency of pricing decisions.</p>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <img src="output/price_by_vehicletype_model2.png" alt="Price by Vehicle Type">
+                    <div class="viz-card-content">
+                        <h3>Vehicle Type Pricing</h3>
+                        <p>Shows how different vehicle types influence pricing in Model 2, reflecting varying space requirements and demand patterns.</p>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <img src="output/correlation_heatmap.png" alt="Feature Correlation Matrix">
+                    <div class="viz-card-content">
+                        <h3>Feature Correlation Matrix</h3>
+                        <p>Reveals relationships between various features and pricing models, identifying key drivers of pricing decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Technology Stack</h2>
+            <div class="tech-stack">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Pandas</span>
+                <span class="tech-item">NumPy</span>
+                <span class="tech-item">Matplotlib</span>
+                <span class="tech-item">Seaborn</span>
+                <span class="tech-item">HTML/CSS</span>
+                <span class="tech-item">GitHub Pages</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Findings & Recommendations</h2>
+            <div class="recommendations">
+                <h3>Strategic Recommendations</h3>
+                <ul>
+                    <li><strong>Parameter Optimization:</strong> Fine-tune model coefficients using historical revenue data and A/B testing</li>
+                    <li><strong>Real-time Integration:</strong> Implement live data feeds for occupancy, traffic, and competitor pricing</li>
+                    <li><strong>Predictive Analytics:</strong> Incorporate forecasting to enable proactive price adjustments</li>
+                    <li><strong>User Experience:</strong> Develop clear pricing communication strategies to maintain customer satisfaction</li>
+                    <li><strong>Robustness Testing:</strong> Validate models under various demand scenarios and competitive strategies</li>
+                </ul>
+            </div>
+            
+            <p>The Competitive Pricing Model (Model 3) demonstrates the most sophisticated approach by balancing internal demand factors with external market conditions, making it the recommended solution for implementation.</p>
+        </div>
+
+        <div class="section">
+            <h2>Repository & Documentation</h2>
+            <p>Complete source code, documentation, and detailed analysis are available in the GitHub repository. The project includes comprehensive data processing scripts, visualization tools, and a detailed technical report.</p>
+            <a href="https://github.com/msrishav-28/dynamic-parking-pricing" class="github-link" target="_blank">View on GitHub</a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                <strong>Project Features:</strong> Complete data pipeline, three pricing models, interactive visualizations, and comprehensive documentation.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
