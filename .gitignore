@@ -17,8 +17,8 @@ processed_parking_data.csv
 # Reports
 *.pdf
 
-# Visualizations
-*.png
+# Visualizations (exclude generated plots, but keep important ones)
+# *.png
 
 # Environment
 .env
