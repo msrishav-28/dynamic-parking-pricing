@@ -97,6 +97,22 @@
             width: 100%;
             height: auto;
             display: block;
+            min-height: 200px;
+            background: #f0f0f0;
+            object-fit: cover;
+        }
+
+        .viz-card img:not([src]) {
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .viz-card img::before {
+            content: "📊 Visualization Loading...";
+            color: #999;
+            font-size: 14px;
         }
 
         .viz-card-content {
@@ -270,42 +286,42 @@
             <h2>Key Visualizations & Insights</h2>
             <div class="visualizations-grid">
                 <div class="viz-card">
-                    <img src="output/price_comparison_over_time.png" alt="Price Comparison Over Time">
+                    <img src="./output/price_comparison_over_time.png" alt="Price Comparison Over Time" onerror="this.style.display='none'; this.nextElementSibling.style.padding='2rem'; this.nextElementSibling.innerHTML='<h3>Price Evolution Comparison</h3><p>Shows how the three pricing models adjust prices over time for a specific parking lot, demonstrating the dynamic nature of each approach.</p><p><em>Image: price_comparison_over_time.png</em></p>'">
                     <div class="viz-card-content">
                         <h3>Price Evolution Comparison</h3>
                         <p>Shows how the three pricing models adjust prices over time for a specific parking lot, demonstrating the dynamic nature of each approach.</p>
                     </div>
                 </div>
                 <div class="viz-card">
-                    <img src="output/occupancy_impact_model2.png" alt="Occupancy Impact on Model 2">
+                    <img src="./output/occupancy_impact_model2.png" alt="Occupancy Impact on Model 2" onerror="this.style.display='none'; this.nextElementSibling.style.padding='2rem'; this.nextElementSibling.innerHTML='<h3>Occupancy Rate Impact</h3><p>Demonstrates the positive correlation between occupancy rates and Model 2 pricing, validating the demand-based approach.</p><p><em>Image: occupancy_impact_model2.png</em></p>'">
                     <div class="viz-card-content">
                         <h3>Occupancy Rate Impact</h3>
                         <p>Demonstrates the positive correlation between occupancy rates and Model 2 pricing, validating the demand-based approach.</p>
                     </div>
                 </div>
                 <div class="viz-card">
-                    <img src="output/queue_impact_model2.png" alt="Queue Length Impact on Model 2">
+                    <img src="./output/queue_impact_model2.png" alt="Queue Length Impact on Model 2" onerror="this.style.display='none'; this.nextElementSibling.style.padding='2rem'; this.nextElementSibling.innerHTML='<h3>Queue Length Influence</h3><p>Illustrates how queue length affects pricing in Model 2, showing increased prices with longer waiting times.</p><p><em>Image: queue_impact_model2.png</em></p>'">
                     <div class="viz-card-content">
                         <h3>Queue Length Influence</h3>
                         <p>Illustrates how queue length affects pricing in Model 2, showing increased prices with longer waiting times.</p>
                     </div>
                 </div>
                 <div class="viz-card">
-                    <img src="output/price_distribution.png" alt="Price Distribution Across Models">
+                    <img src="./output/price_distribution.png" alt="Price Distribution Across Models" onerror="this.style.display='none'; this.nextElementSibling.style.padding='2rem'; this.nextElementSibling.innerHTML='<h3>Price Distribution Analysis</h3><p>Compares the distribution of prices across all three models, highlighting the range and frequency of pricing decisions.</p><p><em>Image: price_distribution.png</em></p>'">
                     <div class="viz-card-content">
                         <h3>Price Distribution Analysis</h3>
                         <p>Compares the distribution of prices across all three models, highlighting the range and frequency of pricing decisions.</p>
                     </div>
                 </div>
                 <div class="viz-card">
-                    <img src="output/price_by_vehicletype_model2.png" alt="Price by Vehicle Type">
+                    <img src="./output/price_by_vehicletype_model2.png" alt="Price by Vehicle Type" onerror="this.style.display='none'; this.nextElementSibling.style.padding='2rem'; this.nextElementSibling.innerHTML='<h3>Vehicle Type Pricing</h3><p>Shows how different vehicle types influence pricing in Model 2, reflecting varying space requirements and demand patterns.</p><p><em>Image: price_by_vehicletype_model2.png</em></p>'">
                     <div class="viz-card-content">
                         <h3>Vehicle Type Pricing</h3>
                         <p>Shows how different vehicle types influence pricing in Model 2, reflecting varying space requirements and demand patterns.</p>
                     </div>
                 </div>
                 <div class="viz-card">
-                    <img src="output/correlation_heatmap.png" alt="Feature Correlation Matrix">
+                    <img src="./output/correlation_heatmap.png" alt="Feature Correlation Matrix" onerror="this.style.display='none'; this.nextElementSibling.style.padding='2rem'; this.nextElementSibling.innerHTML='<h3>Feature Correlation Matrix</h3><p>Reveals relationships between various features and pricing models, identifying key drivers of pricing definitions.</p><p><em>Image: correlation_heatmap.png</em></p>'">
                     <div class="viz-card-content">
                         <h3>Feature Correlation Matrix</h3>
                         <p>Reveals relationships between various features and pricing models, identifying key drivers of pricing decisions.</p>
